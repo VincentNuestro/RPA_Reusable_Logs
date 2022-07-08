@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1288,2767</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1288,1909</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -72,7 +72,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="619,2702" sap2010:WorkflowViewState.IdRef="Sequence_7">
+  <Sequence sap:VirtualizedContainerService.HintSize="619,1844" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FlowState" />
       <Variable x:TypeArguments="x:String" Name="LogFilePath" />
@@ -93,7 +93,7 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="577,2510" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="577,1652" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -101,7 +101,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Check if there is a Log File Existed on the current Folder &quot;Logs&quot; named &quot;DevLog_[ProcessName]_[ProcessCode]_ [dateToday]&quot;&#xD;&#xA;&#xA;if Log File Exist then Delete otherwire Create new Log File" DisplayName="Initiate Robot Log File" sap:VirtualizedContainerService.HintSize="539,2283" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap2010:Annotation.AnnotationText="Check if there is a Log File Existed on the current Folder &quot;Logs&quot; named &quot;DevLog_[ProcessName]_[ProcessCode]_ [dateToday]&quot;&#xD;&#xA;&#xA;if Log File Exist then Delete otherwire Create new Log File" DisplayName="Initiate Robot Log File" sap:VirtualizedContainerService.HintSize="539,1425" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="Processname" />
             <Variable x:TypeArguments="x:String" Name="ProcessCode" />
@@ -120,7 +120,7 @@
               <OutArgument x:TypeArguments="x:String">[in_LogFilePath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">C:\Users\221894.ebatuigas\Documents\UiPath\Devlog\Logs</InArgument>
+              <InArgument x:TypeArguments="x:String">["C:\Users\221894.ebatuigas\Documents\UiPath\Devlog\Logs\" + "DevLogs_" + "Reusable Components" + "_" +"#00001" +"_"+ System.DateTime.Now.ToString("MMddyyyy")]</InArgument>
             </Assign.Value>
           </Assign>
           <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -128,7 +128,7 @@
               <OutArgument x:TypeArguments="x:String">[Log]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[DateTime.Now.ToString + vbTab+ "|" + Environment.MachineName + vbTab +"|" + in_LogLevel + vbTab + "|" + in_LogMessege]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[DateTime.Now.ToString + vbTab+ "|" + Environment.MachineName + vbTab +"        |" + in_LogLevel + vbTab + "                |" + in_LogMessege]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists : Logs File" Exists="[IsFileExists]" sap:VirtualizedContainerService.HintSize="497,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_LogFilePath]" PathType="File">
@@ -141,12 +141,12 @@
           </ui:PathExists>
           <If Condition="[IsFileExists]" DisplayName="If in_LogFilePath Exist " sap:VirtualizedContainerService.HintSize="497,290" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Else>
-              <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[in_LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[&quot;Date/Time : &quot; + vbTab+&quot;&quot; + &quot;Environment : &quot; + vbTab+ &quot;&quot; + &quot;Log Level : &quot; + vbTab + &quot;&quot; + &quot;Log Messege : &quot;]" />
+              <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[in_LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[&quot;Date/Time&quot; + vbTab +&quot;         &quot; + &quot;Environment&quot; + vbTab+ &quot;         &quot; + &quot;Log Level&quot; + vbTab + &quot;         &quot; + &quot;Log Messege&quot;]" />
             </If.Else>
           </If>
           <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="497,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,143" sap2010:WorkflowViewState.IdRef="Sequence_12">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -187,7 +187,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:AppendLine>
-          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_LogLevel]" sap:VirtualizedContainerService.HintSize="497,204" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_LogLevel]" sap:VirtualizedContainerService.HintSize="497,339" sap2010:WorkflowViewState.IdRef="Switch`1_1">
             <Switch.Default>
               <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;-----Robot Process Developer Log------&quot;]">
                 <sap:WorkflowViewStateService.ViewState>
@@ -231,63 +231,6 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
           </Switch>
-          <Sequence sap2010:Annotation.AnnotationText="HEADER" DisplayName="Log - Process Started" sap:VirtualizedContainerService.HintSize="497,386" sap2010:WorkflowViewState.IdRef="Sequence_11">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;-----Robot Process Developer Log------&quot;]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
-            <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendLine_4" Text="-----Robot Process Developer Log------" UseDefaultEncoding="False">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:AppendLine>
-          </Sequence>
-          <Sequence DisplayName="Log - Process Success" sap:VirtualizedContainerService.HintSize="376,527" sap2010:WorkflowViewState.IdRef="Sequence_8">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Robot Process Started&quot;]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
-            <ui:AppendLine File="{x:Null}" DisplayName="Append Line - Success" FileName="[LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[System.DateTime.Now.ToString(&quot;[MM/dd/yyyy HH:mm:ss]&quot;) + &quot; | &quot; + LogLevel.Info.ToString + &quot;:&quot; + &quot;Robot Process Started&quot;]" UseDefaultEncoding="False">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:AppendLine>
-            <ui:AppendLine File="{x:Null}" DisplayName="Append Line - Completed" FileName="[LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendLine_5" Text="[System.DateTime.Now.ToString(&quot;[MM/dd/yyyy HH:mm:ss]&quot;) + &quot; | &quot; + LogLevel.Info.ToString + &quot;:&quot; + &quot;Robot Process Completed&quot;]" UseDefaultEncoding="False">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:AppendLine>
-          </Sequence>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -302,10 +245,10 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Robot Error" sap:VirtualizedContainerService.HintSize="418,576" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Robot Error" sap:VirtualizedContainerService.HintSize="418,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -332,7 +275,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:LogMessage>
-                <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[System.DateTime.Now.ToString(&quot;[MM/dd/yyyy HH:mm:ss]&quot;) + &quot; | &quot; + LogLevel.Info.ToString + &quot;:&quot; + &quot;Robot Process Encounter Error&quot;]" UseDefaultEncoding="False" />
+                <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[in_LogFilePath]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[System.DateTime.Now.ToString(&quot;[MM/dd/yyyy HH:mm:ss]&quot;) + &quot; | &quot; + LogLevel.Info.ToString + &quot;:&quot; + &quot;Robot Process Encounter Error&quot;]" UseDefaultEncoding="False" />
               </Sequence>
             </Sequence>
           </ActivityAction>
